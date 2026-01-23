@@ -1,0 +1,113 @@
+{
+  "nodes": [
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.4,
+      "position": [
+        -1056,
+        464
+      ],
+      "id": "6e15b813-4187-4cd2-9bd2-bbcbabb23bec",
+      "name": "Chat",
+      "webhookId": "de98ac92-10e5-4b3c-8780-5fa5133254df"
+    },
+    {
+      "parameters": {
+        "model": "mistral-large-latest",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatMistralCloud",
+      "typeVersion": 1,
+      "position": [
+        -832,
+        688
+      ],
+      "id": "6f5b3c40-6621-4ac5-a918-2372c50395b5",
+      "name": "LLM",
+      "credentials": {
+        "mistralCloudApi": {
+          "id": "hka5RbQ5tlrZtqal",
+          "name": "Mistral Cloud account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {
+          "systemMessage": "Role :\n\nYou are a Networking Expert correlating ThousandEyes Alerts with Meraki configuration changes.\n\nInstructions :\n\n1. When asked, provide an Root Cause Analysis via MCP tool correlate_alerts_with_meraki_changes, and use the knowledge base to have context on the alert :\n\n### Title : RCA of (20 words max)\n\n**Description:**\n___\n(what is the issue and time in 20 words max)\n\n**Root cause:**\n(what causes the description in 30 words max, quote time if possible, use knowledge base if relevant)\n\n**Scope:**\n(x users / x applications)\n\n**Actions plan:**\n(high level steps, no details, ask if the user wants detail on how to revert the change)\n\n2. When asked for Meraki implementation guidance, use only data from the knowledge base and tag the document used",
+          "enableStreaming": true
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3,
+      "position": [
+        -832,
+        464
+      ],
+      "id": "8ad6d231-fbb8-4851-b77a-8d4c07c98bc5",
+      "name": "Your First AI Agent"
+    },
+    {
+      "parameters": {
+        "endpointUrl": "https://mcp-ciscolive2026.xvalette.com/mcp",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.mcpClientTool",
+      "typeVersion": 1.2,
+      "position": [
+        -688,
+        688
+      ],
+      "id": "7c8becc6-1301-4dfa-99db-1368448b6ccd",
+      "name": "MCP"
+    }
+  ],
+  "connections": {
+    "Chat": {
+      "main": [
+        [
+          {
+            "node": "Your First AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "LLM": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Your First AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Your First AI Agent": {
+      "main": [
+        []
+      ]
+    },
+    "MCP": {
+      "ai_tool": [
+        [
+          {
+            "node": "Your First AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "pinData": {},
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "64fbc538756637cc278e463918c3d9d351927243bf9bc89e5b8b022d347efae3"
+  }
+}
