@@ -1,0 +1,19 @@
+# ThousandEyes-Meraki Correlation Server Configuration
+# Copy this file to config.yml and fill in your actual values
+
+# Server settings
+server:
+  name: "ThousandEyes-Meraki Correlation"
+  host: "your_host_ip_here"  # Host to bind the server to
+  port: 42100            # Port to listen on, use whatever you want
+
+# Meraki API configuration
+meraki:
+  api_key: "your_meraki_api_key_here"
+  org_id: "your_org_id_here"
+  base_url: "https://api.meraki.com/api/v1"  # Optional: override API base URL
+
+# ThousandEyes API configuration
+thousandeyes:
+  token: "your_thousandeyes_token_here"
+  base_url: "https://api.thousandeyes.com/v7"  # Optional: override API base URL
