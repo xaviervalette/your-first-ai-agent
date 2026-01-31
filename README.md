@@ -3,8 +3,19 @@
 
 # Build Your First AI Agent
 
+| Step | Time |
+| :---         |     :---:      |
+| 0. Lab overview   | 30min     | git status    |
+| 1. Install the AI Agent Framework (N8N)     | 30min       |
+| 2. Connect the LLM (Mistral AI Large 3)     | 30min       |
+| 3. Build the tools (MCP)     | 1h       |
+| 4. Optimize (Prompting)     | 30min       |
 
-## Project Structure
+&nbsp;
+
+## 0. Lab overview
+
+### Lab structure
 
 ```
 .
@@ -19,35 +30,24 @@
 └── README.md
 ```
 
-## Project Architecture
-TODO
-
-## Project Agenda
-We will follow the following steps:
-1. 🤖 Install the AI Agent Framework (N8N) - 30min
-2. Connect the LLM
-3. Build the tools
+### Lab architecture
+<img width="915" height="409" alt="image" src="https://github.com/user-attachments/assets/0305fb7e-f0a2-4521-88e0-c4bcf572c2fa" />
 
 
-## Project Requirements
-TODO
 
+### Lab requirements
+- Docker
+- Meraki and ThousandEyes APIs (or any other solutions)
+- Mistral AI API (or any other LLM)
+- Python and uv
 
-A lab guide to Build Your first AI Agent.
-
-The choices made in the Design phase were:
-- **Input**: The task "Collect ThousandEyes alerts with Meraki configuration changes and summarizes potential causes."
-- **Tools**: Cisco ThousandEyes and Cisco Meraki APIs with Model Context Protocols (MCP)
-- **LLM**: Gemini 3 Pro
-- **AI Agent Framework**: N8N
-- **Ouput**: A Root Cause Analysis (RCA)
+&nbsp;
 
 ## 1. 🤖 Install the AI Agent Framework (N8N) - 30min
 
 > [!NOTE]  
-> N8N can be use as SaaS, in Public Cloud or On-Premise
+> I have a Intel NUC for lab purposes, so I decided to use the On-Premise deployment via Docker to reduce costs, but N8N can be use as SaaS, in Public Cloud or On-Premise.
 
-I have a Intel NUC for lab purposes, so I decided to use the On-Premise deployment via Docker to reduce costs.
 
 To install the N8N Docker, I recommend to use `docker-compose`.
 
@@ -56,7 +56,7 @@ cd n8n
 sudo docker-compose up
 ```
 
-After few seconds, you should be able to connect to 'http://<your-host-ip>:5678'.
+After few seconds, you should be able to connect to 'http://your-host-ip:5678'.
 
 Follow the instruction to create an account.
 
@@ -66,11 +66,25 @@ You should have the following result:
 
 <img width="454" height="277" alt="image" src="https://github.com/user-attachments/assets/1d53c13f-6834-4893-90d2-65eb7fbecd29" />
 
+&nbsp;
+
 ## 2. Connect the LLM
 
+> [!NOTE]  
+> I've decided to use Mistral AI because APIs are free for testing. You can use whatever LLM you have (OpenAI, Anthropic, ...).
+
+To connect the LLM to the AI Agent, we will use APIs. It means that we need an API token for the authentication. For Mistral, all the steps are available here: https://docs.mistral.ai/getting-started/quickstart
+
+At this point, you should have generated your Mistral token:
+<img width="1418" height="580" alt="image" src="https://github.com/user-attachments/assets/d4ec4d9c-92d5-4a96-824e-fdb6ab1ac7a3" />
+
+In N8N, add this token into the Mistral LLM node.
+<img width="1344" height="1162" alt="image" src="https://github.com/user-attachments/assets/16036e7e-0e0c-4a09-9c7a-0e583376c3a2" />
 
 
-## 2. Build the Tool
+&nbsp;
+
+## 3. Build the Tool
 
 We are using three API calls for this tool:
 1. https://developer.cisco.com/docs/thousandeyes/list-active-alerts/
