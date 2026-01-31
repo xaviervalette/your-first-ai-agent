@@ -57,7 +57,9 @@ cd n8n
 sudo docker-compose up
 ```
 
-After few seconds, you should be able to connect to 'http://your-host-ip:5678'.
+After few seconds, you should be able to connect to 'http://your-host-ip:5678':
+<img width="1344" height="729" alt="image" src="https://github.com/user-attachments/assets/d4848201-6241-463b-b4f5-d969517eef94" />
+
 
 Follow the instruction to create an account.
 
