@@ -1,19 +1,20 @@
 > [!IMPORTANT]  
 > This lab follows the Cisco Live session AI-1707 where we designed your first AI Agent. Now we are building this AI Agent. I recommend to check the Cisco Live materials if you didn't already
 
+
 # Build Your First AI Agent
 
 | Step | Time |
 | :---         |     :---:      |
-| 0. Lab overview   | 30min     | git status    |
-| 1. Install the AI Agent Framework (N8N)     | 30min       |
-| 2. Connect the LLM (Mistral AI Large 3)     | 30min       |
-| 3. Build the tools (MCP)     | 1h       |
-| 4. Optimize (Prompting)     | 30min       |
+| 0. 🔎 Lab overview   | `30min`     |
+| 1. 🤖 Install the AI Agent Framework (N8N)     | `30min`       |
+| 2. 🧠 Connect the LLM (Mistral AI Large 3)     | `30min`       |
+| 3. 🛠️ Build the tools (MCP)     | `1h`      |
+| 4. 📊 Optimize (Prompting)     | `30min`       |
 
 &nbsp;
 
-## 0. Lab overview
+## 0. 🔎 Lab overview
 
 ### Lab structure
 
@@ -68,7 +69,7 @@ You should have the following result:
 
 &nbsp;
 
-## 2. Connect the LLM
+## 2. 🧠 Connect the LLM
 
 > [!NOTE]  
 > I've decided to use Mistral AI because APIs are free for testing. You can use whatever LLM you have (OpenAI, Anthropic, ...).
@@ -84,7 +85,7 @@ In N8N, add this token into the Mistral LLM node.
 
 &nbsp;
 
-## 3. Build the Tool
+## 3. 🛠️ Build the Tool
 
 We are using three API calls for this tool:
 1. https://developer.cisco.com/docs/thousandeyes/list-active-alerts/
